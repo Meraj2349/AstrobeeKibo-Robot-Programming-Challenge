@@ -25,24 +25,23 @@ public class YourService extends KiboRpcService {
             List<Integer> list = api.getActiveTargets();
 
             // move to a point
-            Point point = new Point(10.71d, -7.7d, 4.48d);
-            Quaternion quaternion = new Quaternion(0f, 0.707f, 0f, 0.707f);
+            Point point = new Point(9.815d, -9.806d, 4.293d);
+            Quaternion quaternion = new Quaternion(0f, 0f, -1f, 0f);
             api.moveTo(point, quaternion, false);
 
 
-
             // get flush light on
-            //api.flashlightControlFront(1);
+            api.flashlightControlFront(1);
 
             // get a camera image
-            //Mat image = api.getMatNavCam();
+            Mat image = api.getMatNavCam();
 
             // irradiate the laser
-            //api.laserControl(true);
+            api.laserControl(true);
 
             // take active target snapshots
-            //int target_id = 1;
-            //api.takeTargetSnapshot(target_id);
+            int target_id = 1;
+            api.takeTargetSnapshot(target_id);
 
             /* ************************************************ */
             /* write your own code and repair the ammonia leak! */
@@ -62,40 +61,33 @@ public class YourService extends KiboRpcService {
             }
         }
         // turn on the front flash light
-       // api.flashlightControlFront(0.05f);
+        api.flashlightControlFront(0.05f);
         
         // get QR code content
-        //String mQrContent = yourMethod();
+        String mQrContent = yourMethod();
 
         // turn off the front flash light
-        //api.flashlightControlFront(0.00f);
+        api.flashlightControlFront(0.00f);
 
         // notify that astrobee is heading to the goal
-        //api.notifyGoingToGoal();
+        api.notifyGoingToGoal();
 
         /* ********************************************************** */
         /* write your own code to move Astrobee to the goal positiion */
         /* ********************************************************** */
 
         // send mission completion
-       // api.reportMissionCompletion(mQrContent);
+        api.reportMissionCompletion(mQrContent);
     }
 
     @Override
     protected void runPlan2(){
        // write your plan 2 here
-        // irradiate the laser
-        api.laserControl(true);
     }
 
     @Override
     protected void runPlan3(){
         // write your plan 3 here
-        // move to a point
-        Point point = new Point(9.815d, -9.806d, 4.293d);
-        Quaternion quaternion = new Quaternion(0f, 0f, -1f, 0f);
-        api.moveTo(point, quaternion, false);
-
     }
 
     // You can add your method
