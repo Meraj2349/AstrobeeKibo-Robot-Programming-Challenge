@@ -64,6 +64,9 @@ public class YourService extends KiboRpcService {
 
             Point target6 = new Point(12.023d, -8.989d, 4.8305d);
             Quaternion quaternion_t6 = new Quaternion(0f, 0f, 0f, 1f);
+            
+            Point qr = new Point(11.381944d, -8.566172d, 3.76203d);
+            Quaternion quaternion_qr = new Quaternion(0f, 0f, 0f, 1f);
 
 
             // move to a point
