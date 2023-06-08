@@ -25,6 +25,47 @@ public class YourService extends KiboRpcService {
             // get the list of active target id
             List<Integer> list = api.getActiveTargets();
 
+            //initialization
+            Point point1 = new Point(11.2746d, -10.1d, 4.47d);
+            Quaternion quaternion_p1 = new Quaternion(0f, 0f, 0f, 1f);
+
+            Point point2 = new Point(10.612d, -10.1d, 4.47d);
+            Quaternion quaternion_p2 = new Quaternion(0f, 0f, 0f, 1f);
+
+            Point point3 = new Point(10.71d, -10.1d, 4.47d);
+            Quaternion quaternion_p3 = new Quaternion(0f, 0f, 0f, 1f);
+
+            Point point4 = new Point(10.51d, -10.1d, 4.47d);
+            Quaternion quaternion_p4 = new Quaternion(0f, 0f, 0f, 1f);
+
+            Point point5 = new Point(11.114d, -10.1d, 4.47d);
+            Quaternion quaternion_p5 = new Quaternion(0f, 0f, 0f, 1f);
+
+            Point point6 = new Point(11.355d, -10.1d, 4.47d);
+            Quaternion quaternion_p6 = new Quaternion(0f, 0f, 0f, 1f);
+
+            Point point7 = new Point(11.369d, -10.1d, 4.47d);
+            Quaternion quaternion_p7 = new Quaternion(0f, 0f, 0f, 1f);
+
+            Point target1 = new Point(10.4d, -10.1d, 4.47d);
+            Quaternion quaternion_t1 = new Quaternion(0f, 0f, 0f, 1f);
+
+            Point target2 = new Point(10.4d, -10.1d, 4.47d);
+            Quaternion quaternion_t2 = new Quaternion(0f, 0f, 0f, 1f);
+
+            Point target3 = new Point(10.4d, -10.1d, 4.47d);
+            Quaternion quaternion_t3 = new Quaternion(0f, 0f, 0f, 1f);
+
+            Point target4 = new Point(10.4d, -10.1d, 4.47d);
+            Quaternion quaternion_t4 = new Quaternion(0f, 0f, 0f, 1f);
+
+            Point target5 = new Point(10.4d, -10.1d, 4.47d);
+            Quaternion quaternion_t5 = new Quaternion(0f, 0f, 0f, 1f);
+
+            Point target6 = new Point(10.4d, -10.1d, 4.47d);
+            Quaternion quaternion_t6 = new Quaternion(0f, 0f, 0f, 1f);
+
+
             // move to a point
             Point point = new Point(10.4d, -10.1d, 4.47d);
             Quaternion quaternion = new Quaternion(0f, 0f, 0f, 1f);
