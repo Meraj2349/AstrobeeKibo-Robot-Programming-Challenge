@@ -9,6 +9,7 @@ import gov.nasa.arc.astrobee.types.Point;
 import gov.nasa.arc.astrobee.types.Quaternion;
 
 import org.opencv.core.Mat;
+
 /**
  * Class meant to handle commands from the Ground Data System and execute them in Astrobee
  */
@@ -25,13 +26,9 @@ public class YourService extends KiboRpcService {
             List<Integer> list = api.getActiveTargets();
 
             // move to a point
-            Point point = new Point(9.815d, -9.806d, 4.293d);
-            Quaternion quaternion = new Quaternion(0f, 0f, -1f, 0f);
+            Point point = new Point(10.4d, -10.1d, 4.47d);
+            Quaternion quaternion = new Quaternion(0f, 0f, 0f, 1f);
             api.moveTo(point, quaternion, false);
-
-
-            // get flush light on
-            api.flashlightControlFront(1);
 
             // get a camera image
             Mat image = api.getMatNavCam();
@@ -51,12 +48,12 @@ public class YourService extends KiboRpcService {
             List<Long> timeRemaining = api.getTimeRemaining();
 
             // check the remaining milliseconds of mission time
-            //if (timeRemaining.get(1) < 60000){
-             //   break;
-          //  }
+            if (timeRemaining.get(1) < 60000){
+                break;
+            }
 
             loop_counter++;
-            if (loop_counter == 5){
+            if (loop_counter == 2){
                 break;
             }
         }
