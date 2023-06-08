@@ -58,7 +58,7 @@ public class YourService extends KiboRpcService {
             q_target[1] = new Quaternion(0.707f, 0f, 0f, 0.707f);
             q_target[2] = new Quaternion(0f, 0f, 0f, 1f);
             q_target[3] = new Quaternion(0.707f, 0f, 0f, 0.707f);
-            q_target[4] = new Quaternion(-0.5f, 0.5f, 0.5f, -0.5f);
+            q_target[4] = new Quaternion(-0.5f, 0.5f, -0.5f, 0.5f);
             q_target[5] = new Quaternion(1f, 0f, 0f, 0f);
             q_target[6] = new Quaternion(0.5f, 0.5f, -0.5f, -0.5f);
 
