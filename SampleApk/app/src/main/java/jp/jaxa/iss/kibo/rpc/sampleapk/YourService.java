@@ -36,7 +36,7 @@ public class YourService extends KiboRpcService {
             Quaternion quaternion_p3 = new Quaternion(0f, 0.707f, 0f, 0.707f);
 
             Point point4 = new Point(10.51d, -6.7185d, 5.1804d);
-            Quaternion quaternion_p4 = new Quaternion(0f, 0f, -1f, 1f);
+            Quaternion quaternion_p4 = new Quaternion(0f, 0f, -1f, 0f);
 
             Point point5 = new Point(11.114d, -7.9756d, 5.3393d);
             Quaternion quaternion_p5 = new Quaternion(-0.5f, -0.5f, -0.5f, 0.5f);
@@ -47,23 +47,23 @@ public class YourService extends KiboRpcService {
             Point point7 = new Point(11.369d, -8.5518d, 4.48d);
             Quaternion quaternion_p7 = new Quaternion(0f, 0.707f, 0f, 0.707f);
 
-            Point target1 = new Point(11.2625d, -10.1d, 4.47d);
-            Quaternion quaternion_t1 = new Quaternion(0f, 0f, 0f, 1f);
+            Point target1 = new Point(11.2625d, -10.58d, 5.3625d);
+            Quaternion quaternion_t1 = new Quaternion(0.707f, 0f, 0f, 0.707f);
 
-            Point target2 = new Point(10.513384d, -10.1d, 4.47d);
+            Point target2 = new Point(10.513384d, -9.085172d, 3.76203d);
             Quaternion quaternion_t2 = new Quaternion(0f, 0f, 0f, 1f);
 
-            Point target3 = new Point(10.6031d, -10.1d, 4.47d);
-            Quaternion quaternion_t3 = new Quaternion(0f, 0f, 0f, 1f);
+            Point target3 = new Point(10.6031d, -7.71007d, 3.76093d);
+            Quaternion quaternion_t3 = new Quaternion(0.707f, 0f, 0f, 0.707f);
 
             Point target4 = new Point(9.866984d, -10.1d, 4.47d);
-            Quaternion quaternion_t4 = new Quaternion(0f, 0f, 0f, 1f);
+            Quaternion quaternion_t4 = new Quaternion(-0.5f, 0.5f, -0.5f, 0.5f);
 
             Point target5 = new Point(11.102d, -10.1d, 4.47d);
-            Quaternion quaternion_t5 = new Quaternion(0f, 0f, 0f, 1f);
+            Quaternion quaternion_t5 = new Quaternion(1f, 0f, 0f, 0f);
 
             Point target6 = new Point(12.023d, -10.1d, 4.47d);
-            Quaternion quaternion_t6 = new Quaternion(0f, 0f, 0f, 1f);
+            Quaternion quaternion_t6 = new Quaternion(0.5f, 0.5f, -0.5f, -0.5f);
 
 
             // move to a point
