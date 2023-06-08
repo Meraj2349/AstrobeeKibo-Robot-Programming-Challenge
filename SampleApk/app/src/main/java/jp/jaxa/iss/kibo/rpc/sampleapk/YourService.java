@@ -48,22 +48,22 @@ public class YourService extends KiboRpcService {
             Quaternion quaternion_p7 = new Quaternion(0f, 0.707f, 0f, 0.707f);
 
             Point target1 = new Point(11.2625d, -10.58d, 5.3625d);
-            Quaternion quaternion_t1 = new Quaternion(0f, 0f, 0f, 1f);
+            Quaternion quaternion_t1 = new Quaternion(0.707f, 0f, 0f, 0.707f);
 
             Point target2 = new Point(10.513384d, -9.085172d, 3.76203d);
             Quaternion quaternion_t2 = new Quaternion(0f, 0f, 0f, 1f);
 
             Point target3 = new Point(10.6031d, -7.71007d, 3.76093d);
-            Quaternion quaternion_t3 = new Quaternion(0f, 0f, 0f, 1f);
+            Quaternion quaternion_t3 = new Quaternion(0.707f, 0f, 0f, 0.707f);
 
             Point target4 = new Point(9.866984d, -6.673972d,5.09531d);
-            Quaternion quaternion_t4 = new Quaternion(0f, 0f, 0f, 1f);
+            Quaternion quaternion_t4 = new Quaternion(-0.5f, 0.5f, 0.5f, -0.5f);
 
             Point target5 = new Point(11.102d, -8.0304d, 5.9076d);
-            Quaternion quaternion_t5 = new Quaternion(0f, 0f, 0f, 1f);
+            Quaternion quaternion_t5 = new Quaternion(1f, 0f, 0f, 0f);
 
             Point target6 = new Point(12.023d, -8.989d, 4.8305d);
-            Quaternion quaternion_t6 = new Quaternion(0f, 0f, 0f, 1f);
+            Quaternion quaternion_t6 = new Quaternion(0.5f, 0.5f, -0.5f, -0.5f);
             
             Point qr = new Point(11.381944d, -8.566172d, 3.76203d);
             Quaternion quaternion_qr = new Quaternion(0f, 0f, 0f, 1f);
