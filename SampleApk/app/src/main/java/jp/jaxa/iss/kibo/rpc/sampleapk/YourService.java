@@ -8,6 +8,7 @@ import gov.nasa.arc.astrobee.android.gs.MessageType;
 import gov.nasa.arc.astrobee.types.Point;
 import gov.nasa.arc.astrobee.types.Quaternion;
 
+import org.apache.commons.logging.Log;
 import org.opencv.core.Mat;
 
 /**
@@ -15,61 +16,65 @@ import org.opencv.core.Mat;
  */
 
 public class YourService extends KiboRpcService {
+    //private final String TAG = this.getClass().getSimpleName();
     @Override
     protected void runPlan1(){
         // the mission starts
+        //Log.i(TAG,"start mission");
         api.startMission();
+
+        
         int loop_counter = 0;
+
+        //initialization
+        Point[] point = new Point[8];
+        Quaternion[] q_point = new Quaternion[8];
+
+        Point[] target = new Point[7];
+        Quaternion[] q_target = new Quaternion[7];
+
+        point[1] = new Point(11.2746d, -9.92284d, 5.2988d);;
+        point[2] = new Point(10.612d, -9.0709d, 4.48d);;
+        point[3] = new Point(10.71d, -7.7d, 4.48d);;
+        point[4] = new Point(10.51d, -6.7185d, 5.1804d);;
+        point[5] = new Point(11.114d, -7.9756d, 5.3393d);;
+        point[6] = new Point(11.355d, -8.9929d, 4.7818d);;
+        point[7] = new Point(11.369d, -8.5518d, 4.48d);;
+
+        q_point[1] = new Quaternion(0f, 0f, -0.707f, 0.707f);;
+        q_point[2] = new Quaternion(0.5f, 0.5f, -0.5f, 0.5f);
+        q_point[3] = new Quaternion(0f, 0.707f, 0f, 0.707f);
+        q_point[4] = new Quaternion(0f, 0f, -1f, 1f);
+        q_point[5] = new Quaternion(-0.5f, -0.5f, -0.5f, 0.5f);
+        q_point[6] = new Quaternion(0f, 0f, 0f, 1f);
+        q_point[7] = new Quaternion(0f, 0.707f, 0f, 0.707f);
+
+        target[1] = new Point(11.2625d, -10.58d, 5.3625d);
+        target[2] = new Point(10.513384d, -9.085172d, 3.76203d);
+        target[3] = new Point(10.6031d, -7.71007d, 3.76093d);
+        target[4] = new Point(9.866984d, -6.673972d,5.09531d);
+        target[6] = new Point(11.102d, -8.0304d, 5.9076d);
+        target[7] = new Point(12.023d, -8.989d, 4.8305d);
+
+        q_target[1] = new Quaternion(0.707f, 0f, 0f, 0.707f);
+        q_target[2] = new Quaternion(0f, 0f, 0f, 1f);
+        q_target[3] = new Quaternion(0.707f, 0f, 0f, 0.707f);
+        q_target[4] = new Quaternion(-0.5f, 0.5f, -0.5f, 0.5f);
+        q_target[5] = new Quaternion(1f, 0f, 0f, 0f);
+        q_target[6] = new Quaternion(0.5f, 0.5f, -0.5f, -0.5f);
+
+        Point qr = new Point(11.381944d, -8.566172d, 3.76203d);
+        Quaternion quaternion_qr = new Quaternion(0f, 0f, 0f, 1f);
 
         while (true){
             // get the list of active target id
             List<Integer> list = api.getActiveTargets();
 
-            //initialization
-            Point[] point = new Point[8];
-            Quaternion[] q_point = new Quaternion[8];
 
-            Point[] target = new Point[7];
-            Quaternion[] q_target = new Quaternion[7];
-
-            point[1] = new Point(11.2746d, -9.92284d, 5.2988d);;
-            point[2] = new Point(10.612d, -9.0709d, 4.48d);;
-            point[3] = new Point(10.71d, -7.7d, 4.48d);;
-            point[4] = new Point(10.51d, -6.7185d, 5.1804d);;
-            point[5] = new Point(11.114d, -7.9756d, 5.3393d);;
-            point[6] = new Point(11.355d, -8.9929d, 4.7818d);;
-            point[7] = new Point(11.369d, -8.5518d, 4.48d);;
-
-            q_point[1] = new Quaternion(0f, 0f, -0.707f, 0.707f);;
-            q_point[2] = new Quaternion(0.5f, 0.5f, -0.5f, 0.5f);
-            q_point[3] = new Quaternion(0f, 0.707f, 0f, 0.707f);
-            q_point[4] = new Quaternion(0f, 0f, -1f, 1f);
-            q_point[5] = new Quaternion(-0.5f, -0.5f, -0.5f, 0.5f);
-            q_point[6] = new Quaternion(0f, 0f, 0f, 1f);
-            q_point[7] = new Quaternion(0f, 0.707f, 0f, 0.707f);
-
-            target[1] = new Point(11.2625d, -10.58d, 5.3625d);
-            target[2] = new Point(10.513384d, -9.085172d, 3.76203d);
-            target[3] = new Point(10.6031d, -7.71007d, 3.76093d);
-            target[4] = new Point(9.866984d, -6.673972d,5.09531d);
-            target[6] = new Point(11.102d, -8.0304d, 5.9076d);
-            target[7] = new Point(12.023d, -8.989d, 4.8305d);
-
-            q_target[1] = new Quaternion(0.707f, 0f, 0f, 0.707f);
-            q_target[2] = new Quaternion(0f, 0f, 0f, 1f);
-            q_target[3] = new Quaternion(0.707f, 0f, 0f, 0.707f);
-            q_target[4] = new Quaternion(-0.5f, 0.5f, -0.5f, 0.5f);
-            q_target[5] = new Quaternion(1f, 0f, 0f, 0f);
-            q_target[6] = new Quaternion(0.5f, 0.5f, -0.5f, -0.5f);
-
-            Point qr = new Point(11.381944d, -8.566172d, 3.76203d);
-            Quaternion quaternion_qr = new Quaternion(0f, 0f, 0f, 1f);
 
 
             // move to a point
-            Point point = new Point(10.4d, -10.1d, 4.47d);
-            Quaternion quaternion = new Quaternion(0f, 0f, 0f, 1f);
-            api.moveTo(point, quaternion, false);
+
 
             // get a camera image
             Mat image = api.getMatNavCam();
