@@ -26,44 +26,44 @@ public class YourService extends KiboRpcService {
             List<Integer> list = api.getActiveTargets();
 
             //initialization
-            Point point1 = new Point(11.2746d, -9.92284d, 5.2988d);
-            Quaternion quaternion_p1 = new Quaternion(0f, 0f, -0.707f, 0.707f);
+            Point[] point = new Point[8];
+            Quaternion[] q_point = new Quaternion[8];
 
-            Point point2 = new Point(10.612d, -9.0709d, 4.48d);
-            Quaternion quaternion_p2 = new Quaternion(0.5f, 0.5f, -0.5f, 0.5f);
+            Point[] target = new Point[7];
+            Quaternion[] q_target = new Quaternion[7];
 
-            Point point3 = new Point(10.71d, -7.7d, 4.48d);
-            Quaternion quaternion_p3 = new Quaternion(0f, 0.707f, 0f, 0.707f);
+            point[1] = new Point(11.2746d, -9.92284d, 5.2988d);;
+            point[2] = new Point(10.612d, -9.0709d, 4.48d);;
+            point[3] = new Point(10.71d, -7.7d, 4.48d);;
+            point[4] = new Point(10.51d, -6.7185d, 5.1804d);;
+            point[5] = new Point(11.114d, -7.9756d, 5.3393d);;
+            point[6] = new Point(11.355d, -8.9929d, 4.7818d);;
+            point[7] = new Point(11.369d, -8.5518d, 4.48d);;
 
-            Point point4 = new Point(10.51d, -6.7185d, 5.1804d);
-            Quaternion quaternion_p4 = new Quaternion(0f, 0f, -1f, 0f);
+            q_point[1] = new Quaternion(0f, 0f, -0.707f, 0.707f);;
+            q_point[2] = new Quaternion(0.5f, 0.5f, -0.5f, 0.5f);
+            q_point[3] = new Quaternion(0f, 0.707f, 0f, 0.707f);
+            q_point[4] = new Quaternion(0f, 0f, -1f, 1f);
+            q_point[5] = new Quaternion(-0.5f, -0.5f, -0.5f, 0.5f);
+            q_point[6] = new Quaternion(0f, 0f, 0f, 1f);
+            q_point[7] = new Quaternion(0f, 0.707f, 0f, 0.707f);
 
-            Point point5 = new Point(11.114d, -7.9756d, 5.3393d);
-            Quaternion quaternion_p5 = new Quaternion(-0.5f, -0.5f, -0.5f, 0.5f);
+            target[1] = new Point(11.2625d, -10.58d, 5.3625d);
+            target[2] = new Point(10.513384d, -9.085172d, 3.76203d);
+            target[3] = new Point(10.6031d, -7.71007d, 3.76093d);
+            target[4] = new Point(9.866984d, -6.673972d,5.09531d);
+            target[6] = new Point(11.102d, -8.0304d, 5.9076d);
+            target[7] = new Point(12.023d, -8.989d, 4.8305d);
 
-            Point point6 = new Point(11.355d, -8.9929d, 4.7818d);
-            Quaternion quaternion_p6 = new Quaternion(0f, 0f, 0f, 1f);
+            q_target[1] = new Quaternion(0.707f, 0f, 0f, 0.707f);
+            q_target[2] = new Quaternion(0f, 0f, 0f, 1f);
+            q_target[3] = new Quaternion(0.707f, 0f, 0f, 0.707f);
+            q_target[4] = new Quaternion(-0.5f, 0.5f, -0.5f, 0.5f);
+            q_target[5] = new Quaternion(1f, 0f, 0f, 0f);
+            q_target[6] = new Quaternion(0.5f, 0.5f, -0.5f, -0.5f);
 
-            Point point7 = new Point(11.369d, -8.5518d, 4.48d);
-            Quaternion quaternion_p7 = new Quaternion(0f, 0.707f, 0f, 0.707f);
-
-            Point target1 = new Point(11.2625d, -10.58d, 5.3625d);
-            Quaternion quaternion_t1 = new Quaternion(0.707f, 0f, 0f, 0.707f);
-
-            Point target2 = new Point(10.513384d, -9.085172d, 3.76203d);
-            Quaternion quaternion_t2 = new Quaternion(0f, 0f, 0f, 1f);
-
-            Point target3 = new Point(10.6031d, -7.71007d, 3.76093d);
-            Quaternion quaternion_t3 = new Quaternion(0.707f, 0f, 0f, 0.707f);
-
-            Point target4 = new Point(9.866984d, -10.1d, 4.47d);
-            Quaternion quaternion_t4 = new Quaternion(-0.5f, 0.5f, -0.5f, 0.5f);
-
-            Point target5 = new Point(11.102d, -10.1d, 4.47d);
-            Quaternion quaternion_t5 = new Quaternion(1f, 0f, 0f, 0f);
-
-            Point target6 = new Point(12.023d, -10.1d, 4.47d);
-            Quaternion quaternion_t6 = new Quaternion(0.5f, 0.5f, -0.5f, -0.5f);
+            Point qr = new Point(11.381944d, -8.566172d, 3.76203d);
+            Quaternion quaternion_qr = new Quaternion(0f, 0f, 0f, 1f);
 
 
             // move to a point
@@ -100,7 +100,7 @@ public class YourService extends KiboRpcService {
         }
         // turn on the front flash light
         api.flashlightControlFront(0.05f);
-        
+
         // get QR code content
         String mQrContent = yourMethod();
 
@@ -120,7 +120,7 @@ public class YourService extends KiboRpcService {
 
     @Override
     protected void runPlan2(){
-       // write your plan 2 here
+        // write your plan 2 here
     }
 
     @Override
