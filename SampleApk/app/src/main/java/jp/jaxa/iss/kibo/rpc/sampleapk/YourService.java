@@ -23,16 +23,20 @@ public class YourService extends KiboRpcService {
         //Log.i(TAG,"start mission");
         api.startMission();
 
+
         
         int loop_counter = 0;
+
 
         //initialization
         Point[] point = new Point[8];
         Quaternion[] q_point = new Quaternion[8];
 
+
         Point[] target = new Point[7];
         Quaternion[] q_target = new Quaternion[7];
 
+        point[0] = new Point(9.815d, -9.806d, 4.293d);;
         point[1] = new Point(11.2746d, -9.92284d, 5.2988d);;
         point[2] = new Point(10.612d, -9.0709d, 4.48d);;
         point[3] = new Point(10.71d, -7.7d, 4.48d);;
@@ -41,6 +45,7 @@ public class YourService extends KiboRpcService {
         point[6] = new Point(11.355d, -8.9929d, 4.7818d);;
         point[7] = new Point(11.369d, -8.5518d, 4.48d);;
 
+        q_point[0] = new Quaternion(1f, 0f, 0f, 0f);;
         q_point[1] = new Quaternion(0f, 0f, -0.707f, 0.707f);;
         q_point[2] = new Quaternion(0.5f, 0.5f, -0.5f, 0.5f);
         q_point[3] = new Quaternion(0f, 0.707f, 0f, 0.707f);
@@ -53,8 +58,8 @@ public class YourService extends KiboRpcService {
         target[2] = new Point(10.513384d, -9.085172d, 3.76203d);
         target[3] = new Point(10.6031d, -7.71007d, 3.76093d);
         target[4] = new Point(9.866984d, -6.673972d,5.09531d);
-        target[6] = new Point(11.102d, -8.0304d, 5.9076d);
-        target[7] = new Point(12.023d, -8.989d, 4.8305d);
+        target[5] = new Point(11.102d, -8.0304d, 5.9076d);
+        target[6] = new Point(12.023d, -8.989d, 4.8305d);
 
         q_target[1] = new Quaternion(0.707f, 0f, 0f, 0.707f);
         q_target[2] = new Quaternion(0f, 0f, 0f, 1f);
@@ -64,63 +69,67 @@ public class YourService extends KiboRpcService {
         q_target[6] = new Quaternion(0.5f, 0.5f, -0.5f, -0.5f);
 
         Point qr = new Point(11.381944d, -8.566172d, 3.76203d);
-        Quaternion quaternion_qr = new Quaternion(0f, 0f, 0f, 1f);
+        Point temp = new Point(10.815d, -9.806d, 4.293d);;
 
-        while (true){
-            // get the list of active target id
-            List<Integer> list = api.getActiveTargets();
-
+        Quaternion q_qr = new Quaternion(0f, 0f, 0f, 1f);
+        Quaternion q_temp = q_point[0];
 
 
 
-            // move to a point
-
-
-            // get a camera image
-            Mat image = api.getMatNavCam();
-
-            // irradiate the laser
-            api.laserControl(true);
-
-            // take active target snapshots
-            int target_id = 1;
-            api.takeTargetSnapshot(target_id);
-
-            /* ************************************************ */
-            /* write your own code and repair the ammonia leak! */
-            /* ************************************************ */
-
-            // get remaining active time and mission time
-            List<Long> timeRemaining = api.getTimeRemaining();
-
-            // check the remaining milliseconds of mission time
-            if (timeRemaining.get(1) < 60000){
-                break;
-            }
-
-            loop_counter++;
-            if (loop_counter == 2){
-                break;
-            }
-        }
+        //x axis try
+        api.moveTo(temp,q_temp,true);
+//        while (true){
+//            // get the list of active target id
+//            List<Integer> list = api.getActiveTargets();
+//
+//            // move to a point
+//
+//
+//
+//            // get a camera image
+//            Mat image = api.getMatNavCam();
+//
+//            // irradiate the laser
+//            api.laserControl(true);
+//
+//            // take active target snapshots
+//            int target_id = 1;
+//            api.takeTargetSnapshot(target_id);
+//
+//            /* ************************************************ */
+//            /* write your own code and repair the ammonia leak! */
+//            /* ************************************************ */
+//
+//            // get remaining active time and mission time
+//            List<Long> timeRemaining = api.getTimeRemaining();
+//
+//            // check the remaining milliseconds of mission time
+//            if (timeRemaining.get(1) < 60000){
+//                break;
+//            }
+//
+//            loop_counter++;
+//            if (loop_counter == 2){
+//                break;
+//            }
+//        }
         // turn on the front flash light
-        api.flashlightControlFront(0.05f);
-
-        // get QR code content
-        String mQrContent = yourMethod();
-
-        // turn off the front flash light
-        api.flashlightControlFront(0.00f);
-
-        // notify that astrobee is heading to the goal
-        api.notifyGoingToGoal();
-
-        /* ********************************************************** */
-        /* write your own code to move Astrobee to the goal positiion */
-        /* ********************************************************** */
-
-        // send mission completion
-        api.reportMissionCompletion(mQrContent);
+//        api.flashlightControlFront(0.05f);
+//
+//        // get QR code content
+//        String mQrContent = yourMethod();
+//
+//        // turn off the front flash light
+//        api.flashlightControlFront(0.00f);
+//
+//
+//
+//        /* ********************************************************** */
+//        /* write your own code to move Astrobee to the goal positiion */
+//        /* ********************************************************** */
+//
+//        // send mission completion
+//        api.reportMissionCompletion(mQrContent);
     }
 
     @Override
