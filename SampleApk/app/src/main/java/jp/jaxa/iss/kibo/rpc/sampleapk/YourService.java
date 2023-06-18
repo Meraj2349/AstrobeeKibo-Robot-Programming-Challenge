@@ -8,6 +8,7 @@ import gov.nasa.arc.astrobee.android.gs.MessageType;
 import gov.nasa.arc.astrobee.types.Point;
 import gov.nasa.arc.astrobee.types.Quaternion;
 
+import org.apache.commons.logging.Log;
 import org.opencv.core.Mat;
 
 /**
@@ -15,9 +16,11 @@ import org.opencv.core.Mat;
  */
 
 public class YourService extends KiboRpcService {
+    //private final String TAG = this.getClass().getSimpleName();
     @Override
     protected void runPlan1(){
         // the mission starts
+        //Log.i(TAG,"start mission");
         api.startMission();
 
         //initialization
@@ -65,15 +68,8 @@ public class YourService extends KiboRpcService {
         Point temp = new Point(9.815d, -9.806d, 4.293d);;
         Quaternion q_temp =q_point[0];
 
-        //x axis try
+        //try to move on x axis
         api.moveTo(temp,q_temp,true);
-
-
-        // notify that astrobee is heading to the goal
-
-
-
-
 
 //        while (true){
 //            // get the list of active target id
@@ -131,7 +127,7 @@ public class YourService extends KiboRpcService {
 
     @Override
     protected void runPlan2(){
-       // write your plan 2 here
+        // write your plan 2 here
     }
 
     @Override
