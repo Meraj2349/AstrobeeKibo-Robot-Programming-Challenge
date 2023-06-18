@@ -63,12 +63,12 @@ public class YourService extends KiboRpcService {
         q_target[6] = new Quaternion(0.5f, 0.5f, -0.5f, -0.5f);
 
         Point qr = new Point(11.381944d, -8.566172d, 3.76203d);
-        Quaternion quaternion_qr = new Quaternion(0f, 0f, 0f, 1f);
+        Quaternion qn_qr = new Quaternion(0f, 0f, 0f, 1f);
 
-        Point temp = new Point(9.815d, -9.806d, 4.293d);;
+        Point temp = new Point(8.815d, -9.806d, 4.293d);;
         Quaternion q_temp =q_point[0];
 
-        //try to move on x axis
+        //try to move on y axis
         api.moveTo(temp,q_temp,true);
 
 //        while (true){
