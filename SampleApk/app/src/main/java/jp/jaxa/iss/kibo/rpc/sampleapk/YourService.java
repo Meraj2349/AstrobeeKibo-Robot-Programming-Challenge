@@ -1,5 +1,7 @@
 package jp.jaxa.iss.kibo.rpc.sampleapk;
 
+import android.media.Image;
+
 import jp.jaxa.iss.kibo.rpc.api.KiboRpcService;
 
 import java.util.List;
@@ -29,6 +31,10 @@ public class YourService extends KiboRpcService {
 
         Point[] target = new Point[7];
         Quaternion[] q_target = new Quaternion[7];
+
+        Point[] min_kz = new Point[6];
+        Point[] max_kz = new Point[6];
+        Point[] kiz = new Point[3];
 
         point[0] = new Point(9.815d, -9.806d, 4.293d);;
         point[1] = new Point(11.2746d, -9.92284d, 5.2988d);;
@@ -62,14 +68,26 @@ public class YourService extends KiboRpcService {
         q_target[5] = new Quaternion(1f, 0f, 0f, 0f);
         q_target[6] = new Quaternion(0.5f, 0.5f, -0.5f, -0.5f);
 
+//        min_kz[1] = new Point(11.381944d, -8.566172d, 3.76203d);
+//        min_kz[2] = new Point(11.381944d, -8.566172d, 3.76203d);
+//        min_kz[3] = new Point(11.381944d, -8.566172d, 3.76203d);
+//        min_kz[4] = new Point(11.381944d, -8.566172d, 3.76203d);
+//        min_kz[5] = new Point(11.381944d, -8.566172d, 3.76203d);
+
         Point qr = new Point(11.381944d, -8.566172d, 3.76203d);
         Quaternion qn_qr = new Quaternion(0f, 0f, 0f, 1f);
 
-        Point temp = new Point(9.815d, -8.806d, 4.293d);;
-        Quaternion q_temp =q_point[0];
+        Point temp = new Point(10.4075d, -8.903d, 4.8465d);
+        Quaternion q_temp = q_target[5];
 
-        //try to move on y axis
+        //try to move on target 1
+        //api.moveTo(target[1],q_target[1],true); //failed
+        //api.moveTo(target[2],q_target[2],true);
         api.moveTo(temp,q_temp,true);
+        api.moveTo(target[5],q_target[5],true);
+
+        Mat img = api.getMatNavCam();
+        api.saveMatImage(img,"img.png");
 
 //        while (true){
 //            // get the list of active target id
