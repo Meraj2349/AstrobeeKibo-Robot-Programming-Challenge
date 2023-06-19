@@ -79,11 +79,16 @@ public class YourService extends KiboRpcService {
         Point temp = new Point(10.4075d, -8.903d, 4.8465d);
         Quaternion q_temp = q_target[5];
 
+        //
         //try to move on target 1
-        //api.moveTo(target[1],q_target[1],true); //failed
-        //api.moveTo(target[2],q_target[2],true);
-        api.moveTo(temp,q_temp,true);
-        api.moveTo(target[5],q_target[5],true);
+
+
+        //ar tag read kore center coordinate dectect korbi
+
+
+        //api.moveTo();
+        api.laserControl(true);
+        api.takeTargetSnapshot(1);
 
         Mat img = api.getMatNavCam();
         api.saveMatImage(img,"img.png");
