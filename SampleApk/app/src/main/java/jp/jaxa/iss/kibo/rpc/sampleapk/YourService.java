@@ -58,7 +58,7 @@ public class YourService extends KiboRpcService {
         target[3] = new Point(10.6031d, -7.71007d, 3.76093d);
         target[4] = new Point(9.866984d, -6.673972d,5.09531d);
         target[5] = new Point(11.102d, -8.0304d, 5.9076d);
-        target[6] = new Point(12.023d, -8.989d, 4.8305d);
+        target[6] = new Point(11.5d, -8.989d, 4.8305d);
 
         q_target[1] = new Quaternion(0.707f, 0f, 0f, 0.707f);
         q_target[2] = new Quaternion(0f, 0f, 0f, 1f);
@@ -76,14 +76,16 @@ public class YourService extends KiboRpcService {
         Point qr = new Point(11.381944d, -8.566172d, 3.76203d);
         Quaternion qn_qr = new Quaternion(0f, 0f, 0f, 1f);
 
-
-        Point temp = new Point(10.4585d, -8.0304d, 5.1003d);
-        Quaternion q_temp = q_target[5];
-
+        //Point temp = new Point(10d, -9.2955d, 5.1003d);
+        //Quaternion q_temp = q_target[6];
+        Point temp = new Point(11d, -8d, 5d);
+        Quaternion q_temp = q_target[6];
 
         //try to move on target 6
         api.moveTo(temp,q_temp,true);
-        api.moveTo(target[6],q_temp,true);
+        api.moveTo(target[6],q_target[6],true);
+        //api.moveTo(target[6],q_temp,true);
+
 
 
         //ar tag read kore center coordinate dectect korbi
