@@ -18,7 +18,9 @@ import org.opencv.core.Mat;
  */
 
 public class YourService extends KiboRpcService {
-    //private final String TAG = this.getClass().getSimpleName();
+    //image index
+    int img_index = 0;
+
     @Override
     protected void runPlan1(){
         // the mission starts
@@ -43,6 +45,58 @@ public class YourService extends KiboRpcService {
         Point[] koz_4= new Point[9];
         Point[] koz_5= new Point[9];
 
+
+        //storing all coordinates of KOZ
+        //KOZ1 all coordinates
+        koz_1[1]= new Point(10.783d,-9.8899d,4.8385d);
+        koz_1[2]= new Point(11.071d,-9.8899d,4.8385d);
+        koz_1[3]= new Point(11.071d,-9.6929,4.8385d);
+        koz_1[4]= new Point(10.783d,-9.6929,4.8385d);
+        koz_1[5]= new Point(11.071d,-9.6929,5.0665d);
+        koz_1[6]= new Point(11.071d,-9.8899d,5.0665d);
+        koz_1[7]= new Point(10.783d,-9.8899d,5.0665d);
+        koz_1[8]= new Point(10.783d,-9.6929,5.0665d);
+
+        //KOZ2 all coordinates
+        koz_2[1]= new Point(10.8652d,-9.0734d,4.3861d);
+        koz_2[2]= new Point(10.9628d,-9.0734d,4.3861d);
+        koz_2[3]= new Point(10.9628d,-8.7314d,4.3861d);
+        koz_2[4]= new Point(10.8652d,-8.7314d,4.3861d);
+        koz_2[5]= new Point(10.9628d,-8.7314,4.6401d);
+        koz_2[6]= new Point(10.9628d,-9.0734d,4.6401d);
+        koz_2[7]= new Point(10.8652d,-9.0734d,4.6401d);
+        koz_2[8]= new Point(10.8652d,-8.7314,4.6401d);
+
+        //KOZ3 all coordinates
+        koz_3[1]= new Point(10.185d,-8.38526d,4.1475d);
+        koz_3[2]= new Point(11.665d,-8.38526d,4.1475d);
+        koz_3[3]= new Point(11.665d,-8.2826d,4.1475d);
+        koz_3[4]= new Point(10.185d,-8.2826d,4.1475d);
+        koz_3[5]= new Point(11.665d,-8.2826d,4.6725d);
+        koz_3[6]= new Point(11.665d,-8.38526d,4.6725d);
+        koz_3[7]= new Point(10.185d,-8.38526d,4.6725d);
+        koz_3[8]= new Point(10.185d,-8.2826d,4.6725d);
+
+        //KOZ4 all coordinates
+        koz_4[1]= new Point(10.7955d,-8.0635d,5.1055d);
+        koz_4[2]= new Point(11.3525d,-8.0635d,5.1055d);
+        koz_4[3]= new Point(11.3525d,-7.7305d,5.1055d);
+        koz_4[4]= new Point(10.7955d,-7.7305d,5.1055d);
+        koz_4[5]= new Point(11.3525d,-7.7305d,5.1305d);
+        koz_4[6]= new Point(11.3525d,-8.0635d,5.1305d);
+        koz_4[7]= new Point(10.7955d,-8.0635d,5.1305d);
+        koz_4[8]= new Point(10.7955d,-7.7305,5.1305d);
+
+        //KOZ5 all coordinates
+        koz_5[1]= new Point(10.563d,-7.1449d,4.6544d);
+        koz_5[2]= new Point(10.709d,-7.1449d,4.6544d);
+        koz_5[3]= new Point(10.709d,-6.8099d,4.6544d);
+        koz_5[4]= new Point(10.563d,-6.8099d,4.6544d);
+        koz_5[5]= new Point(10.709d,-6.8099d,4.8164d);
+        koz_5[6]= new Point(10.709d,-7.1449d,4.8164d);
+        koz_5[7]= new Point(10.563d,-7.1449d,4.8164d);
+        koz_5[8]= new Point(10.563d,-6.8099d,4.8164d);
+
         point[0] = new Point(9.815d, -9.806d, 4.293d);;
         point[1] = new Point(11.2746d, -9.92284d, 5.2988d);;
         point[2] = new Point(10.612d, -9.0709d, 4.48d);;
@@ -66,7 +120,7 @@ public class YourService extends KiboRpcService {
         target[3] = new Point(10.6031d, -7.71007d, 3.76093d);
         target[4] = new Point(9.866984d, -6.673972d,5.09531d);
         target[5] = new Point(11.102d, -8.0304d, 5.9076d);
-        target[6] = new Point(12.023d, -8.989d, 4.8305d);
+        target[6] = new Point(11.55d, -8.933d, 4.7175d);
 
         q_target[1] = new Quaternion(0.707f, 0f, 0f, 0.707f);
         q_target[2] = new Quaternion(0f, 0f, 0f, 1f);
@@ -133,20 +187,45 @@ public class YourService extends KiboRpcService {
         koz_5[8]= new Point(10.563d,-6.8099d,4.8164d);
 
 
+
+
         Point qr = new Point(11.381944d, -8.566172d, 3.76203d);
         Quaternion qn_qr = new Quaternion(0f, 0f, 0f, 1f);
 
-        Point temp = new Point(10.4075d, -8.903d, 4.8465d);
-        Quaternion q_temp = q_target[5];
 
-        //try to move on target 1
-        //api.moveTo(target[1],q_target[1],true); //failed
-        //api.moveTo(target[2],q_target[2],true);
-        api.moveTo(temp,q_temp,true);
-        api.moveTo(target[5],q_target[5],true);
+        //try to move on temp6
+        Point temp6 = new Point(11d, -8.989d, 5.1d);
+        Quaternion q_temp6 = new Quaternion(1f, 0f, 0f, 0f);
+        api.moveTo(temp6,q_temp6,true);
 
-        Mat img = api.getMatNavCam();
-        api.saveMatImage(img,"img.png");
+
+        //move to temp2
+        Point temp2 = new Point(-12d, -8.989d, 4.85d);
+        Quaternion q_temp2 = new Quaternion(0.5f, 0.5f, 0.5f, -0.5f);
+        api.moveTo(temp2, q_temp2, true);
+
+
+        //taking image
+        tk_Img();
+
+        //try to move on target 6
+        api.moveTo(target[6],q_target[5],true);
+        //taking image
+        tk_Img();
+
+        api.laserControl(true);
+        api.takeTargetSnapshot(6);
+
+        //move to target 2
+        api.moveTo(target[2], q_target[2], true);
+        tk_Img();
+
+        api.laserControl(true);
+        api.takeTargetSnapshot(2);
+
+
+
+        //ar tag read kore center coordinate dectect korbi
 
 //        while (true){
 //            // get the list of active target id
@@ -184,13 +263,13 @@ public class YourService extends KiboRpcService {
 //            }
 //        }
         // turn on the front flash light
-//        api.flashlightControlFront(0.05f);
+        api.flashlightControlFront(0.05f);
 //
 //        // get QR code content
-//        String mQrContent = yourMethod();
+        String mQrContent = yourMethod();
 //
 //        // turn off the front flash light
-//        api.flashlightControlFront(0.00f);
+        api.flashlightControlFront(0.00f);
 //
 //
 //
@@ -199,7 +278,7 @@ public class YourService extends KiboRpcService {
 //        /* ********************************************************** */
 //
 //        // send mission completion
-//        api.reportMissionCompletion(mQrContent);
+        api.reportMissionCompletion(mQrContent);
     }
 
     @Override
@@ -215,5 +294,13 @@ public class YourService extends KiboRpcService {
     // You can add your method
     private String yourMethod(){
         return "your method";
+    }
+    public void tk_Img(){
+        //taking image
+        Mat img = api.getMatNavCam();
+        api.saveMatImage(img,"Nav_mat "+String.valueOf(img_index)+".png");
+        img = api.getMatDockCam();
+        api.saveMatImage(img,"dock_mat "+String.valueOf(img_index)+".png");
+        img_index++;
     }
 }
