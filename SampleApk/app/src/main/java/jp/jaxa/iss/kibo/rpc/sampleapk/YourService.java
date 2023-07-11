@@ -131,25 +131,48 @@ public class YourService extends KiboRpcService {
         Point qr = new Point(11.381944d, -8.566172d, 3.76203d);
         Quaternion qn_qr = new Quaternion(0f, 0f, 0f, 1f);
 
+        //target 1
+        Point temp1 = new Point(10.5d, -10.5d, 4.8d);
+        Quaternion q_temp1 = q_target[1];
 
-        //try to move on temp6
-        Point temp6 = new Point(11d, -8.989d, 5.1d);
-        Quaternion q_temp6 = new Quaternion(1f, 0f, 0f, 0f);
-        api.moveTo(temp6,q_temp6,true);
-
-        //taking image
-        tk_Img();
-
-        //try to move on target 6
-        api.moveTo(target[6],q_target[5],true);
-        //taking image
-        tk_Img();
-
-        api.laserControl(true);
-        api.takeTargetSnapshot(6);
+        api.moveTo(temp1,q_temp1,true);
+        api.moveTo(target[1],q_target[1],true);
 
 
 
+        //target 6
+//        {
+//
+//            //try to move on temp6
+//            Point temp6 = new Point(11d, -8.989d, 5.1d);
+//            Quaternion q_temp6 = new Quaternion(1f, 0f, 0f, 0f);
+//            api.moveTo(temp6, q_temp6, true);
+//
+//            //taking image
+//            tk_Img();
+//
+//            //try to move on target 6
+//            api.moveTo(target[6], q_target[5], true);
+//            //taking image
+//            tk_Img();
+//
+//            api.laserControl(true);
+//            api.takeTargetSnapshot(6);
+//
+//            //Target 5
+//            Point temp5 = new Point(11.689d, -8.2826d, 4.6725d);
+//            Quaternion q_temp5 = new Quaternion(0.5f, 0.5f, 0.5f, -0.5f);
+//
+//            //api.moveTo(temp5,q_temp5,true);
+//
+//
+//            api.moveTo(target[5], q_temp5, true);
+//            tk_Img();
+//
+//            api.laserControl(true);
+//            api.takeTargetSnapshot(5);
+//
+//        }
         //ar tag read kore center coordinate dectect korbi
 
 //        while (true){
